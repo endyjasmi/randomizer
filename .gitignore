@@ -1,4 +1,7 @@
 .nyc_output/
-build/
+build/commonjs/
+build/esmodule/
+build/types/
+build/web/
 coverage/
 node_modules/
