@@ -1,0 +1,8 @@
+{
+  "async-only": true,
+  "enable-source-maps": true,
+  "extensions": [".js", ".cjs", ".mjs", ".ts", ".cts", ".mts"],
+  "reporter": ["dot"],
+  "require": ["babel.register.js"],
+  "spec": ["source/index.test.*"]
+}

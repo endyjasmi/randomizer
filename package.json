@@ -1,0 +1,113 @@
+{
+  "name": "@endyjasmi/randomizer",
+  "description": "Randomizer is a library that is used to test GitHub actions and semantic-release.",
+  "version": "0.0.0",
+  "keywords": [
+    "randomizer",
+    "sandbox"
+  ],
+  "license": "MIT",
+  "contributors": [
+    "Endy Jasmi <endyjasmi@gmail.com>"
+  ],
+  "funding": [
+    {
+      "type": "ko-fi",
+      "url": "https://ko-fi.com/endyjasmi"
+    },
+    {
+      "type": "paypal",
+      "url": "https://paypal.me/endyjasmi"
+    }
+  ],
+  "homepage": "https://github.com/endyjasmi/randomizer",
+  "bugs": {
+    "email": "endyjasmi@gmail.com",
+    "url": "https://github.com/endyjasmi/randomizer/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/endyjasmi/randomizer"
+  },
+  "type": "commonjs",
+  "files": [
+    "build"
+  ],
+  "main": "./build/commonjs/index.js",
+  "module": "./build/esmodule/index.js",
+  "types": "./build/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./build/esmodule/index.js",
+      "require": "./build/commonjs/index.js",
+      "types": "./build/types/index.d.ts"
+    },
+    "./*": {
+      "import": "./build/esmodule/*/index.js",
+      "require": "./build/commonjs/*/index.js",
+      "types": "./build/types/*/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "npm run build:commonjs && npm run build:esmodule && npm run build:types && npm run build:bundle",
+    "build:bundle": "npm run clean:build:bundle && webpack --config \"./webpack.build.js\"",
+    "build:commonjs": "npm run clean:build:commonjs && tsc --project \"./tsconfig.commonjs.json\" && npm run _:pkgtyp commonjs \"./build/commonjs/package.json\"",
+    "build:esmodule": "npm run clean:build:esmodule && tsc --project \"./tsconfig.esmodule.json\" && npm run _:pkgtyp module \"./build/esmodule/package.json\"",
+    "build:types": "npm run clean:build:types && tsc --project \"./tsconfig.types.json\"",
+    "clean": "npm run clean:build && npm run clean:test",
+    "clean:build": "npm run _:rmrf \"./build\"",
+    "clean:build:bundle": "npm run _:rmrf \"./build/bundle\"",
+    "clean:build:commonjs": "npm run _:rmrf \"./build/commonjs\"",
+    "clean:build:esmodule": "npm run _:rmrf \"./build/esmodule\"",
+    "clean:build:types": "npm run _:rmrf \"./build/types\"",
+    "clean:test": "npm run _:rmrf \"./.nyc_output\" \"./coverage\"",
+    "clean:test:browser": "npm run _:rmrf \"./coverage/browser\" \"./coverage/chrome\" \"./coverage/firefox\" \"./coverage/webkit\"",
+    "clean:test:chromium": "npm run _:rmrf \"./coverage/chrome\"",
+    "clean:test:firefox": "npm run _:rmrf \"./coverage/firefox\"",
+    "clean:test:nodejs": "npm run _:rmrf \"./.nyc_output\" \"./coverage/nodejs\"",
+    "clean:test:webkit": "npm run _:rmrf \"./coverage/webkit\"",
+    "clean:vendor": "npm run _:rmrf \"./node_modules\"",
+    "lint": "eslint",
+    "test": "npm run test:nodejs && npm run test:browser",
+    "test:browser": "npm run clean:test:browser && karma start --browsers ChromiumHeadless,FirefoxHeadless,WebkitHeadless",
+    "test:chromium": "npm run clean:test:chromium && karma start --browsers ChromiumHeadless",
+    "test:firefox": "npm run clean:test:firefox && karma start --browsers FirefoxHeadless",
+    "test:nodejs": "npm run clean:test:nodejs && nyc mocha",
+    "test:webkit": "npm run clean:test:webkit && karma start --browsers WebkitHeadless",
+    "_:pkgtyp": "node -e \"fs.writeFileSync(process.argv[2], '{\\\"type\\\":\\\"'+process.argv[1]+'\\\"}')\"",
+    "_:rmrf": "node -e \"process.argv.slice(1).forEach((target) => fs.rmSync(target, { force: true, recursive: true }))\""
+  },
+  "devDependencies": {
+    "@babel/core": "^7.21.4",
+    "@babel/preset-env": "^7.21.4",
+    "@babel/preset-typescript": "^7.21.4",
+    "@babel/register": "^7.21.0",
+    "@istanbuljs/nyc-config-typescript": "^1.0.2",
+    "@tsconfig/node18": "^1.0.1",
+    "@types/chai": "^4.3.4",
+    "@types/mocha": "^10.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.58.0",
+    "@typescript-eslint/parser": "^5.58.0",
+    "babel-loader": "^9.1.2",
+    "babel-plugin-istanbul": "^6.1.1",
+    "babel-plugin-module-resolver": "^5.0.0",
+    "chai": "^4.3.7",
+    "eslint": "^8.38.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-mocha": "^10.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "karma": "^6.4.1",
+    "karma-chrome-launcher": "^3.1.1",
+    "karma-coverage": "^2.2.0",
+    "karma-firefox-launcher": "^2.1.2",
+    "karma-mocha": "^2.0.1",
+    "karma-webkit-launcher": "^2.1.0",
+    "karma-webpack": "^5.0.0",
+    "mocha": "^10.2.0",
+    "playwright": "^1.32.3",
+    "prettier": "^2.8.7",
+    "typescript": "^5.0.4",
+    "webpack": "^5.78.0",
+    "webpack-cli": "^5.0.1"
+  }
+}

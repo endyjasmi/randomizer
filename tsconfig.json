@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "moduleResolution": "nodenext"
+  },
+  "extends": ["@tsconfig/node18/tsconfig.json"],
+  "include": ["source/**/*"]
+}

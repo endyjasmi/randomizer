@@ -1,0 +1,7 @@
+{
+  "extends": "@istanbuljs/nyc-config-typescript",
+  "exclude": ["babel.*", "**/*.test.*", "**/index.*"],
+  "extensions": [".js", ".cjs", ".mjs", ".ts", ".cts", ".mts"],
+  "reporter": ["json", "lcov", "text"],
+  "report-dir": "./coverage/nodejs"
+}

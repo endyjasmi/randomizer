@@ -1,0 +1,25 @@
+{
+  "env": {
+    "browser": true,
+    "mocha": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:prettier/recommended",
+    "plugin:mocha/recommended"
+  ],
+  "files": ["source/**/*"],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "project": "./tsconfig.json",
+    "sourceType": "module"
+  },
+  "root": true,
+  "rules": {
+    "mocha/max-top-level-suites": "off",
+    "mocha/no-synchronous-tests": "error"
+  }
+}
