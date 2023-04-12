@@ -1,0 +1,11 @@
+.nyc_output/
+build/commonjs/
+build/module/
+build/script/
+build/types/
+coverage/
+node_modules/
+babel.config.js
+babel.register.js
+karma.conf.js
+webpack.config.js

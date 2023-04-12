@@ -71,7 +71,7 @@
     "coverage:firefox": "http-server -c-1 -o \"./coverage/firefox/lcov-report\"",
     "coverage:nodejs": "http-server -c-1 -o \"./coverage/nodejs/lcov-report\"",
     "coverage:webkit": "http-server -c-1 -o \"./coverage/webkit/lcov-report\"",
-    "lint": "eslint",
+    "lint": "eslint \"./source/**/*\"",
     "test": "npm run test:nodejs && npm run test:browser",
     "test:browser": "karma start --browsers ChromiumHeadless,FirefoxHeadless,WebkitHeadless",
     "test:chromium": "karma start --browsers ChromiumHeadless",
