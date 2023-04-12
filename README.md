@@ -1,6 +1,6 @@
 # 📦 Randomizer
 
-Randomizer is a library that is used to test GitHub actions and semantic-release.
+Randomizer is a library that is used to test GitHub services.
 
 ## ⚖️ License
 
