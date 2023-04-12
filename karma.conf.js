@@ -7,14 +7,6 @@ Object.assign(process.env, {
   WEBKIT_HEADLESS_BIN: webkit.executablePath(),
 });
 
-const webpackConfig = require("./webpack.config.js");
-const { rules } = webpackConfig.module;
-const byLoader = (loader) => (rule) => rule.loader === loader;
-const babelLoaderRule = rules.find(byLoader("babel-loader"));
-Object.assign(babelLoaderRule, {
-  options: { plugins: [["istanbul", { exclude: ["**/*.test.*"] }]] },
-});
-
 module.exports = function (karmaConfig) {
   karmaConfig.set({
     basePath: __dirname,
@@ -34,6 +26,6 @@ module.exports = function (karmaConfig) {
     },
     reporters: ["dots", "coverage"],
     singleRun: true,
-    webpack: webpackConfig,
+    webpack: require("./webpack.config.js"),
   });
 };
