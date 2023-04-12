@@ -34,32 +34,32 @@
     "build"
   ],
   "main": "./build/commonjs/index.js",
-  "module": "./build/esmodule/index.js",
+  "module": "./build/module/index.js",
   "types": "./build/types/index.d.ts",
   "exports": {
     ".": {
-      "import": "./build/esmodule/index.js",
+      "import": "./build/module/index.js",
       "require": "./build/commonjs/index.js",
       "types": "./build/types/index.d.ts"
     },
     "./*": {
-      "import": "./build/esmodule/*/index.js",
+      "import": "./build/module/*/index.js",
       "require": "./build/commonjs/*/index.js",
       "types": "./build/types/*/index.d.ts"
     }
   },
   "scripts": {
-    "build": "npm run build:commonjs && npm run build:esmodule && npm run build:types && npm run build:web",
+    "build": "npm run build:commonjs && npm run build:module && npm run build:types && npm run build:script",
     "build:commonjs": "npm run clean:build:commonjs && tsc --project \"./build/tsconfig.commonjs.json\" && npm run _:pkgtyp commonjs \"./build/commonjs/package.json\"",
-    "build:esmodule": "npm run clean:build:esmodule && tsc --project \"./build/tsconfig.esmodule.json\" && npm run _:pkgtyp module \"./build/esmodule/package.json\"",
+    "build:module": "npm run clean:build:module && tsc --project \"./build/tsconfig.module.json\" && npm run _:pkgtyp module \"./build/module/package.json\"",
+    "build:script": "npm run clean:build:script && webpack --config \"./build/webpack.config.js\"",
     "build:types": "npm run clean:build:types && tsc --project \"./build/tsconfig.types.json\"",
-    "build:web": "npm run clean:build:web && webpack --config \"./build/webpack.config.js\"",
     "clean": "npm run clean:build && npm run clean:test",
-    "clean:build": "npm run _:rmrf \"./build/commonjs\" \"./build/esmodule\" \"./build/types\" \"./build/web\"",
+    "clean:build": "npm run _:rmrf \"./build/commonjs\" \"./build/module\" \"./build/types\" \"./build/script\"",
     "clean:build:commonjs": "npm run _:rmrf \"./build/commonjs\"",
-    "clean:build:esmodule": "npm run _:rmrf \"./build/esmodule\"",
+    "clean:build:module": "npm run _:rmrf \"./build/module\"",
+    "clean:build:script": "npm run _:rmrf \"./build/script\"",
     "clean:build:types": "npm run _:rmrf \"./build/types\"",
-    "clean:build:web": "npm run _:rmrf \"./build/web\"",
     "clean:test": "npm run _:rmrf \"./.nyc_output\" \"./coverage\"",
     "clean:test:browser": "npm run _:rmrf \"./coverage/browser\" \"./coverage/chrome\" \"./coverage/firefox\" \"./coverage/webkit\"",
     "clean:test:chromium": "npm run _:rmrf \"./coverage/chrome\"",
