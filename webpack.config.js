@@ -1,8 +1,8 @@
 const webpack = require("webpack");
 
-module.exports = {
+const webpackConfig = {
   devtool: "inline-source-map",
-  mode: "development",
+  mode: "none",
   module: {
     rules: [
       {
@@ -13,7 +13,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.EnvironmentPlugin(process.env),
     new webpack.NormalModuleReplacementPlugin(/^node:/, (resource) => {
       resource.request = resource.request.substring(5);
     }),
@@ -40,3 +39,9 @@ module.exports = {
   },
   stats: "errors-only",
 };
+
+if (process.env.NODE_ENV === "test") {
+  webpackConfig.plugins.unshift(new webpack.EnvironmentPlugin(process.env));
+}
+
+module.exports = webpackConfig;

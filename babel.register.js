@@ -1,3 +1,5 @@
+process.env.NODE_ENV = "test";
+
 const moduleResolver = require("babel-plugin-module-resolver");
 function resolvePath(sourcePath, currentFile, options) {
   return moduleResolver

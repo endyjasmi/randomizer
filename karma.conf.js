@@ -1,3 +1,5 @@
+process.env.NODE_ENV = "test";
+
 const { chromium, firefox, webkit } = require("playwright");
 Object.assign(process.env, {
   CHROME_BIN: chromium.executablePath(),

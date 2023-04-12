@@ -1,3 +1,5 @@
+process.env.NODE_ENV = "build";
+
 const path = require("path");
 
 module.exports = Object.assign(require("../webpack.config.js"), {
