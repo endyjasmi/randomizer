@@ -5,8 +5,9 @@ module.exports = Object.assign(require("../webpack.config.js"), {
   entry: path.join(process.cwd(), "source", "index.ts"),
   mode: "production",
   output: {
-    filename: "randomizer.min.js",
-    library: { name: "@endyjasmi/randomizer", type: "global" },
+    filename: "randomizer.umd.js",
+    globalObject: "this",
+    library: { name: "@endyjasmi/randomizer", type: "umd" },
     path: path.join(__dirname, "script"),
   },
 });
