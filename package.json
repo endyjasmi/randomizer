@@ -1,7 +1,7 @@
 {
   "name": "@endyjasmi/randomizer",
   "description": "Randomizer is a library that is used to test GitHub actions and semantic-release.",
-  "version": "0.0.0",
+  "version": "0.3.0",
   "keywords": [
     "randomizer",
     "sandbox"
